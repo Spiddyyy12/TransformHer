@@ -184,12 +184,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     <input type="email" id="reg-email" name="email" required>
                 </div>
                 <div class="form-group">
+                    <label for="reg-phone">Phone Number</label>
+                    <input type="tel" id="reg-phone" name="phone" placeholder="e.g. +91 98765 43210" required>
+                </div>
+                <div class="form-group">
                     <label for="reg-city">City</label>
                     <input type="text" id="reg-city" name="event" required>
                 </div>
                 <div class="form-group">
                     <label for="reg-business">Business Type</label>
-                    <select id="reg-business" name="phone" required>
+                    <select id="reg-business" name="business" required>
                         <option value="" disabled selected>Select your business type</option>
                         <option value="tech">Technology / SaaS</option>
                         <option value="ecommerce">E-commerce / D2C</option>
@@ -216,8 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = {
             name: document.getElementById("reg-name").value,
             email: document.getElementById("reg-email").value,
-            phone: document.getElementById("reg-business").value,
-            event: document.getElementById("reg-city").value
+            phone: document.getElementById("reg-phone").value,
+            event: document.getElementById("reg-city").value,
+            business: document.getElementById("reg-business").value
         };
 
         submitBtn.disabled = true;
