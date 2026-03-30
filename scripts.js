@@ -177,19 +177,19 @@ document.addEventListener('DOMContentLoaded', function () {
             <form class="reg-form" id="reg-form">
                 <div class="form-group">
                     <label for="reg-name">Full Name</label>
-                    <input type="text" id="reg-name" placeholder="Your full name" required>
+                    <input type="text" id="reg-name" name="name" required>
                 </div>
                 <div class="form-group">
                     <label for="reg-email">Email Address</label>
-                    <input type="email" id="reg-email" placeholder="you@example.com" required>
+                    <input type="email" id="reg-email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="reg-city">City</label>
-                    <input type="text" id="reg-city" placeholder="e.g. Mumbai, Delhi, Bangalore" required>
+                    <input type="text" id="reg-city" name="event" required>
                 </div>
                 <div class="form-group">
                     <label for="reg-business">Business Type</label>
-                    <select id="reg-business" required>
+                    <select id="reg-business" name="phone" required>
                         <option value="" disabled selected>Select your business type</option>
                         <option value="tech">Technology / SaaS</option>
                         <option value="ecommerce">E-commerce / D2C</option>
@@ -210,16 +210,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function handleRegSubmit(e) {
         e.preventDefault();
-        modalBody.innerHTML = `
-            <div class="form-success">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#F06136" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/>
-                </svg>
-                <h3>You're In! 🎉</h3>
-                <p>Thank you for registering. We'll send you an email with next steps, upcoming cohort dates, and your welcome kit.</p>
-                <button class="btn btn-primary" style="margin-top:20px;" onclick="document.getElementById('modal-overlay').classList.remove('active');document.body.style.overflow='';">Close</button>
-            </div>
-        `;
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+        
+        const data = {
+            name: document.getElementById("reg-name").value,
+            email: document.getElementById("reg-email").value,
+            phone: document.getElementById("reg-business").value,
+            event: document.getElementById("reg-city").value
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Registering...";
+
+        fetch("https://script.google.com/macros/s/AKfycbyYGQ8XXT6BigE4Sus-TfpRkE2Q82GMQrPX4dJZ6RVURUUXKf5LsHb5yiEwiyV1Vqs0-g/exec", {
+            method: "POST",
+            mode: "no-cors",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            modalBody.innerHTML = `
+                <div class="form-success">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#F06136" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/>
+                    </svg>
+                    <h3>You're In! 🎉</h3>
+                    <p>Thank you for registering. We'll send you an email with next steps, upcoming cohort dates, and your welcome kit.</p>
+                    <button class="btn btn-primary" style="margin-top:20px;" onclick="document.getElementById('modal-overlay').classList.remove('active');document.body.style.overflow='';">Close</button>
+                </div>
+            `;
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Error ❌ Submission failed. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalBtnText;
+        });
     }
 
     /* Register buttons */
