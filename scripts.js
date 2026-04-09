@@ -284,17 +284,18 @@ document.addEventListener('DOMContentLoaded', function () {
             openModal(`
                 <h2>${d.title}</h2>
                 <p>${d.desc}</p>
-                <button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>
+                ${idx === 0 
+                  ? `<a href="https://www.facebook.com/share/g/18WoSExrr6/?mibextid=wwXIfr" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
+                  : `<button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>`
+                }
             `);
-            document.getElementById('event-reg-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                if (idx === 0) {
-                    window.open('https://www.facebook.com/share/g/18WoSExrr6/?mibextid=wwXIfr', '_blank');
-                } else {
+            if (idx !== 0) {
+                document.getElementById('event-reg-btn').addEventListener('click', (e) => {
+                    e.preventDefault();
                     closeModal();
                     setTimeout(openRegistrationModal, 350);
-                }
-            });
+                });
+            }
         });
     });
 
