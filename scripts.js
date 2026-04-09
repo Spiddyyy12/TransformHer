@@ -286,7 +286,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>${d.desc}</p>
                 <button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>
             `);
-            document.getElementById('event-reg-btn').addEventListener('click', (e) => { e.preventDefault(); closeModal(); setTimeout(openRegistrationModal, 350); });
+            document.getElementById('event-reg-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (idx === 0) {
+                    window.open('https://www.facebook.com/share/g/18WoSExrr6/?mibextid=wwXIfr', '_blank');
+                } else {
+                    closeModal();
+                    setTimeout(openRegistrationModal, 350);
+                }
+            });
         });
     });
 
