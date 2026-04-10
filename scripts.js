@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h2>${d.title}</h2>
                 <p>${d.desc}</p>
                 ${idx === 0 
-                  ? `<a href="https://www.facebook.com/share/g/18WoSExrr6/?mibextid=wwXIfr" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
+                  ? `<a href="pricing-workshop.html" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
                   : `<button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>`
                 }
             `);

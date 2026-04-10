@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Without Apology | TransformHER</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Luxury Feminine Palette */
+            --dark-mahogany: #2C1A16;
+            --cream: #FAF6F0;
+            --blush: #F2D9CE;
+            --gold: #C4973A;
+            --white: #FFFFFF;
+            --gray-text: #4A4A4A;
+            
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--gray-text);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif-text {
+            font-family: var(--font-serif);
+            font-weight: 600;
+        }
+
+        /* ─── TYPOGRAPHY UTILS ─── */
+        .text-gold { color: var(--gold); }
+        .text-white { color: var(--white); }
+        .text-center { text-align: center; }
+        .italic { font-style: italic; }
+        
+        /* ─── LAYOUT UTILS ─── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .bg-dark { background-color: var(--dark-mahogany); color: var(--cream); }
+        .bg-cream { background-color: var(--cream); }
+        .bg-blush { background-color: var(--blush); }
+        
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--white);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 16px 36px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #a67c29;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(196, 151, 58, 0.3);
+        }
+
+        /* ─── HERO SECTION ─── */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--cream);
+        }
+        .hero h2 {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--blush);
+            margin-bottom: 40px;
+        }
+        .hero .urgency {
+            margin-top: 20px;
+            color: var(--blush);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── FEEL SEEN SECTION ─── */
+        .feel-seen h2 {
+            font-size: 3rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 40px;
+        }
+        .pain-points {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pain-points li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .pain-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* ─── REAL PROBLEM SECTION ─── */
+        .real-problem {
+            text-align: center;
+        }
+        .real-problem blockquote {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+        .untaught-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .untaught-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+        }
+        .untaught-item h3 {
+            color: var(--blush);
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .untaught-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ─── WHAT YOU'LL LEARN ─── */
+        .learn-section h2 {
+            font-size: 3rem;
+            color: var(--dark-mahogany);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .learn-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 6px;
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .learn-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 15px;
+        }
+        .learn-card p {
+            font-size: 1.05rem;
+        }
+
+        /* ─── TRANSFORMATION SECTION ─── */
+        .transformation {
+            text-align: center;
+        }
+        .transformation p {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--dark-mahogany);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .transformation p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── ABOUT COACH ─── */
+        .about-coach {
+            padding: 100px 0;
+        }
+        .coach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .coach-image {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            box-shadow: -15px 15px 0 var(--blush);
+        }
+        .coach-content h2 {
+            font-size: 3rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 10px;
+        }
+        .coach-content .subtitle {
+            font-family: var(--font-sans);
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .coach-mission {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--dark-mahogany);
+            border-left: 4px solid var(--blush);
+            padding-left: 24px;
+            margin: 30px 0;
+            line-height: 1.4;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials h2 {
+            font-size: 3rem;
+            color: var(--dark-mahogany);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-top: 4px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .testimonial-card p {
+            font-size: 1.3rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .testimonial-card .author {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* ─── WORKSHOP DETAILS ─── */
+        .details-section h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .detail-item {
+            border: 1px solid rgba(242, 217, 206, 0.2);
+            padding: 40px 20px;
+            border-radius: 4px;
+        }
+        .detail-item .icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        .detail-item h4 {
+            color: var(--blush);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* ─── BONUS SECTION ─── */
+        .bonus-section {
+            text-align: center;
+        }
+        .bonus-card {
+            background: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            border: 2px dashed var(--gold);
+        }
+        .bonus-card h2 {
+            font-size: 2.5rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 20px;
+        }
+        .bonus-list {
+            list-style: none;
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .bonus-list li {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--dark-mahogany);
+            font-weight: 500;
+        }
+        .bonus-list li::before {
+            content: '✓';
+            color: var(--gold);
+            font-size: 1.4rem;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* ─── PRICE JUSTIFICATION ─── */
+        .price-justification {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .price-justification h2 {
+            font-size: 2.5rem;
+            color: var(--dark-mahogany);
+            margin-bottom: 20px;
+        }
+        .price-justification p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* ─── SCARCITY BAR ─── */
+        .scarcity-bar {
+            background-color: var(--blush);
+            color: var(--dark-mahogany);
+            text-align: center;
+            padding: 15px 0;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ─── FINAL CTA ─── */
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+        .final-cta h2 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: var(--cream);
+            margin-bottom: 40px;
+        }
+        .final-close {
+            margin-top: 60px;
+            font-size: 1.8rem;
+            color: var(--blush);
+            opacity: 0.8;
+        }
+
+        /* ─── STICKY BOTTOM BAR ─── */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sticky-bar.visible {
+            transform: translateY(0);
+        }
+        .sticky-text {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--dark-mahogany);
+            font-weight: 600;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .sticky-text {
+                display: block;
+            }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE DESIGN ─── */
+        @media (max-width: 900px) {
+            .grid-cards, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .coach-grid {
+                grid-template-columns: 1fr;
+            }
+            .coach-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            section {
+                padding: 60px 0;
+            }
+            .untaught-list {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn {
+                width: 100%;
+                padding: 16px 10px;
+            }
+            .sticky-bar .btn {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero bg-dark" id="hero">
+        <div class="container fade-up">
+            <h2>Live Offline Workshop — 3 Hours</h2>
+            <h1>Stop Undercharging Your Talent.<br>Start Pricing With Confidence.</h1>
+            <a href="#" class="btn">Reserve My Spot for ₹1999</a>
+            <p class="urgency">Limited seats available.</p>
+        </div>
+    </section>
+
+    <!-- FEEL SEEN SECTION -->
+    <section class="feel-seen bg-cream">
+        <div class="container text-center fade-up">
+            <h2>Does this feel like you?</h2>
+            <ul class="pain-points text-left">
+                <li>You hesitate right before stating your price on a discovery call.</li>
+                <li>You reduce your quotes at the last minute because you're afraid of losing the client.</li>
+                <li>You constantly compare your prices with competitors instead of honoring your unique value.</li>
+                <li>You feel guilty charging what you actually need to sustain your business and life.</li>
+                <li>You attract clients who negotiate every single penny of your worth.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- THE REAL PROBLEM -->
+    <section class="real-problem bg-dark">
+        <div class="container fade-up">
+            <blockquote class="italic serif-text">
+                "It's not a pricing problem — it's a confidence problem."
+            </blockquote>
+            <div class="untaught-list">
+                <div class="untaught-item">
+                    <h3>1. Valuing Your Expertise</h3>
+                    <p>We are taught to overdeliver and under-ask, treating our years of hard-won knowledge as an afterthought rather than a premium asset.</p>
+                </div>
+                <div class="untaught-item">
+                    <h3>2. Divorcing Worth from Price</h3>
+                    <p>We attach our personal self-esteem to the number on our invoice, making rejection feel deeply personal rather than purely business.</p>
+                </div>
+                <div class="untaught-item">
+                    <h3>3. Commanding the Room</h3>
+                    <p>We focus on justifying the cost rather than unapologetically presenting the transformative value we bring to the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <section class="learn-section bg-cream">
+        <div class="container fade-up">
+            <h2>What You'll Learn</h2>
+            <div class="grid-cards">
+                <div class="learn-card">
+                    <h3>The Root of Pricing Guilt</h3>
+                    <p>Understand the psychology behind why you undercharge and dismantle the imposter syndrome keeping you small.</p>
+                </div>
+                <div class="learn-card">
+                    <h3>The 5 Hidden Blocks</h3>
+                    <p>Identify and break through the invisible, subconscious money barriers that sabotage your sales conversations.</p>
+                </div>
+                <div class="learn-card">
+                    <h3>Define Your True Value</h3>
+                    <p>Learn how to calculate your worth based on the transformation you provide, not just the hours you put in.</p>
+                </div>
+                <div class="learn-card">
+                    <h3>The Premium Pricing Framework</h3>
+                    <p>A step-by-step strategy to structure your packages so clients see the undeniable ROI of working with you.</p>
+                </div>
+                <div class="learn-card">
+                    <h3>Saying It Without Fear</h3>
+                    <p>Master the exact scripts and tonality needed to state your price confidently without apologizing or over-explaining.</p>
+                </div>
+                <div class="learn-card">
+                    <h3>The Mindset Shift</h3>
+                    <p>Adopt the mindset of a high-value entrepreneur who commands respect and attracts dream clients who happily pay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSFORMATION -->
+    <section class="transformation bg-blush">
+        <div class="container fade-up">
+            <p class="serif-text italic">Imagine confidently stating your price…</p>
+            <p class="serif-text italic">Without second-guessing, without justification…</p>
+            <p class="serif-text italic">And hearing the client say, "Let's do it."</p>
+        </div>
+    </section>
+
+    <!-- ABOUT COACH -->
+    <section class="about-coach bg-cream">
+        <div class="container coach-grid fade-up">
+            <img src="founder.jpg" alt="Tejaswini Pisal" class="coach-image">
+            <div class="coach-content">
+                <p class="subtitle">Meet Your Workshop Coach</p>
+                <h2>Tejaswini Pisal</h2>
+                <p>Tejaswini has spent years empowering women entrepreneurs to claim their space in the business world. Having navigated the emotional complexities of pricing and self-worth herself, she has distilled her insights into actionable strategies that create immediate shifts.</p>
+                <div class="coach-mission">
+                    "My mission is to see women stop playing small. Because when a woman learns to price her value unapologetically, she doesn't just change her business — she changes her entire life."
+                </div>
+                <p>Join her for three immersive hours that will forever alter how you view yourself and your business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials bg-cream" style="padding-top: 0;">
+        <div class="container fade-up">
+            <h2>What Women Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="serif-text italic">"Before this workshop, my voice would literally shake when stating my fees. Now, I quote double what I used to, and I don't feel the need to explain why. It's completely shifted my business."</p>
+                    <span class="author">— Priya M., Brand Consultant</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="serif-text italic">"I realized I was treating my business like a hobby simply because I was terrified of rejection. Tejaswini gave me the framework and the courage to finally ask for what I'm worth."</p>
+                    <span class="author">— Ananya S., Freelance Designer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOP DETAILS -->
+    <section class="details-section bg-dark">
+        <div class="container fade-up">
+            <h2>The Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="icon">📅</div>
+                    <h4>Date</h4>
+                    <p class="text-white">To Be Confirmed</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">⏰</div>
+                    <h4>Time</h4>
+                    <p class="text-white">To Be Confirmed</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">📍</div>
+                    <h4>Format</h4>
+                    <p class="text-white">Live Offline</p>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">⏳</div>
+                    <h4>Duration</h4>
+                    <p class="text-white">3 Immersive Hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS SECTION -->
+    <section class="bonus-section bg-cream">
+        <div class="container fade-up">
+            <div class="bonus-card">
+                <h2>Early Bird Bonuses</h2>
+                <p>Register today and receive these exclusive tools at the workshop:</p>
+                <ul class="bonus-list">
+                    <li>The Pricing Confidence Worksheet (Value ₹999)</li>
+                    <li>Word-for-Word Sales Conversation Script (Value ₹1499)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICE JUSTIFICATION -->
+    <section class="price-justification bg-cream" style="padding-top: 0;">
+        <div class="container fade-up">
+            <h2>Not Just Another Workshop</h2>
+            <p>Your investment of <strong>₹1999</strong> isn't just paying for three hours of time. It is an investment in breaking years of subconscious blocks. It is the bridge between under-earning and building a profitable, sustainable business filled with clients who respect your value.</p>
+            <p>One confident "Yes" from a properly priced client will pay for this workshop tenfold. Are you ready?</p>
+        </div>
+    </section>
+
+    <!-- SCARCITY BAR -->
+    <div class="scarcity-bar">
+        Limited Seats Available — Book Now
+    </div>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta bg-dark">
+        <div class="container fade-up">
+            <h2 class="serif-text">Stop Playing Small.</h2>
+            <a href="#" class="btn">Reserve My Seat for ₹1999</a>
+            <p class="final-close italic serif-text">One decision can change everything. This might be that moment for you.</p>
+        </div>
+    </section>
+
+    <!-- STICKY BOTTOM BAR -->
+    <div class="sticky-bar" id="sticky-bar">
+        <span class="sticky-text">Pricing Without Apology Workshop</span>
+        <a href="#" class="btn">Reserve My Seat for ₹1999</a>
+    </div>
+
+    <!-- MAIN LOGIC -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for Fade-Up animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Optional: Stop observing once faded in to avoid re-triggering
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Sticky Bar Logic
+            const heroSection = document.getElementById('hero');
+            const stickyBar = document.getElementById('sticky-bar');
+
+            const stickyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Show sticky bar when hero section is completely out of view
+                    if (!entry.isIntersecting) {
+                        stickyBar.classList.add('visible');
+                    } else {
+                        stickyBar.classList.remove('visible');
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0
+            });
+
+            stickyObserver.observe(heroSection);
+        });
+    </script>
+</body>
+</html>
