@@ -281,15 +281,20 @@ document.addEventListener('DOMContentLoaded', function () {
         tile.addEventListener('click', () => {
             const idx = parseInt(tile.dataset.modal.split('-')[1]);
             const d = eventsData[idx];
+            let linkUrl = null;
+            if (idx === 0) linkUrl = 'pricing-workshop.html';
+            else if (idx === 2) linkUrl = 'https://www.instagram.com/transformher_exhibitions?igsh=M2R4OGJjaTgxc3ps&utm_source=qr';
+            else if (idx === 3) linkUrl = 'https://chat.whatsapp.com/Iuf2fS6kH3lEaRYEkn0zud?mode=gi_t';
+
             openModal(`
                 <h2>${d.title}</h2>
                 <p>${d.desc}</p>
-                ${idx === 0 
-                  ? `<a href="pricing-workshop.html" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
+                ${linkUrl 
+                  ? `<a href="${linkUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
                   : `<button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>`
                 }
             `);
-            if (idx !== 0) {
+            if (!linkUrl) {
                 document.getElementById('event-reg-btn').addEventListener('click', (e) => {
                     e.preventDefault();
                     closeModal();
