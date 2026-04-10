@@ -405,4 +405,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         startSlideshow();
     }
+
+    /* ─── AUTO-OPEN MODAL FROM URL ─── */
+    if (window.location.hash === '#register' || window.location.search.includes('register=true')) {
+        setTimeout(openRegistrationModal, 500);
+    }
 });
