@@ -30,6 +30,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-sans);
             color: var(--gray-text);
@@ -258,38 +262,6 @@
             padding-left: 24px;
             margin: 30px 0;
             line-height: 1.4;
-        }
-
-        /* ─── TESTIMONIALS ─── */
-        .testimonials h2 {
-            font-size: 3rem;
-            color: var(--dark-mahogany);
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        .testimonial-card {
-            background: var(--white);
-            padding: 40px;
-            border-top: 4px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .testimonial-card p {
-            font-size: 1.3rem;
-            color: var(--dark-mahogany);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .testimonial-card .author {
-            font-family: var(--font-sans);
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--gold);
-            text-transform: uppercase;
         }
 
         /* ─── WORKSHOP DETAILS ─── */
@@ -600,22 +572,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials bg-cream" style="padding-top: 0;">
-        <div class="container fade-up">
-            <h2>What Women Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="serif-text italic">"Before this workshop, my voice would literally shake when stating my fees. Now, I quote double what I used to, and I don't feel the need to explain why. It's completely shifted my business."</p>
-                    <span class="author">— Priya M., Brand Consultant</span>
-                </div>
-                <div class="testimonial-card">
-                    <p class="serif-text italic">"I realized I was treating my business like a hobby simply because I was terrified of rejection. Tejaswini gave me the framework and the courage to finally ask for what I'm worth."</p>
-                    <span class="author">— Ananya S., Freelance Designer</span>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- WORKSHOP DETAILS -->
     <section class="details-section bg-dark">
@@ -678,7 +635,7 @@
     <section class="final-cta bg-dark">
         <div class="container fade-up">
             <h2 class="serif-text">Stop Playing Small.</h2>
-            <a href="#" class="btn">Reserve My Seat for ₹1999</a>
+            <a href="#hero" class="btn">Reserve My Seat for ₹1999</a>
             <p class="final-close italic serif-text">One decision can change everything. This might be that moment for you.</p>
         </div>
     </section>
@@ -686,7 +643,7 @@
     <!-- STICKY BOTTOM BAR -->
     <div class="sticky-bar" id="sticky-bar">
         <span class="sticky-text">Pricing Without Apology Workshop</span>
-        <a href="#" class="btn">Reserve My Seat for ₹1999</a>
+        <a href="#hero" class="btn">Reserve My Seat for ₹1999</a>
     </div>
 
     <!-- MAIN LOGIC -->
