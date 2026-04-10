@@ -281,20 +281,30 @@ document.addEventListener('DOMContentLoaded', function () {
         tile.addEventListener('click', () => {
             const idx = parseInt(tile.dataset.modal.split('-')[1]);
             const d = eventsData[idx];
-            let linkUrl = null;
-            if (idx === 0) linkUrl = 'pricing-workshop.html';
-            else if (idx === 2) linkUrl = 'https://www.instagram.com/transformher_exhibitions?igsh=M2R4OGJjaTgxc3ps&utm_source=qr';
-            else if (idx === 3) linkUrl = 'https://chat.whatsapp.com/Iuf2fS6kH3lEaRYEkn0zud?mode=gi_t';
+            let modalContent = '';
+            
+            if (idx === 0) {
+                modalContent = `
+                    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:20px;">
+                        <a href="pricing-workshop.html" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;">Join Upcoming Workshop</a>
+                        <a href="https://www.facebook.com/share/g/18WoSExrr6/?mibextid=wwXIfr" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-block; padding:12px 24px;">Join LearningHUB</a>
+                    </div>
+                `;
+            } else if (idx === 2) {
+                modalContent = `<a href="https://www.instagram.com/transformher_exhibitions?igsh=M2R4OGJjaTgxc3ps&utm_source=qr" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`;
+            } else if (idx === 3) {
+                modalContent = `<a href="https://chat.whatsapp.com/Iuf2fS6kH3lEaRYEkn0zud?mode=gi_t" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`;
+            } else {
+                modalContent = `<button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>`;
+            }
 
             openModal(`
                 <h2>${d.title}</h2>
                 <p>${d.desc}</p>
-                ${linkUrl 
-                  ? `<a href="${linkUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px; display:inline-block;">${d.cta}</a>`
-                  : `<button class="btn btn-primary" onclick="event.stopPropagation();" id="event-reg-btn" style="margin-top:20px;">${d.cta}</button>`
-                }
+                ${modalContent}
             `);
-            if (!linkUrl) {
+
+            if (idx !== 0 && idx !== 2 && idx !== 3) {
                 document.getElementById('event-reg-btn').addEventListener('click', (e) => {
                     e.preventDefault();
                     closeModal();
